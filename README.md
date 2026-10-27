@@ -2,6 +2,8 @@
 
 Codezy is an offline-first practical exam code library built with Vue 3 and Vite. It includes subject and practical browsing, search, bookmarks, recently viewed items, syntax-highlighted code, and installable PWA support.
 
+The current library includes empty Cybersecurity and Artificial Intelligence subjects. Practical content can be added as it is provided.
+
 ## Development
 
 - `npm install` installs dependencies.

@@ -40,6 +40,8 @@ import {
   GitBranch, 
   Database, 
   Globe, 
+  Shield,
+  BrainCircuit,
   Layers, 
   ArrowRight 
 } from 'lucide-vue-next';
@@ -65,6 +67,8 @@ const resolvedIcon = computed(() => {
     case 'GitBranch': return GitBranch;
     case 'Database': return Database;
     case 'Globe': return Globe;
+    case 'Shield': return Shield;
+    case 'BrainCircuit': return BrainCircuit;
     default: return Layers;
   }
 });

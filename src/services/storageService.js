@@ -136,6 +136,14 @@ export const storageService = {
     return true;
   },
 
+  retainPracticalReferences(validPracticalIds) {
+    const validIds = new Set(validPracticalIds);
+    const bookmarks = this.getBookmarks().filter(id => validIds.has(id));
+    const history = this.getRecentHistory().filter(item => item && validIds.has(item.id));
+
+    return setItem(KEYS.BOOKMARKS, bookmarks) && setItem(KEYS.RECENT_HISTORY, history);
+  },
+
   // ================= Recently Viewed History =================
   getRecentHistory() {
     const history = getItem(KEYS.RECENT_HISTORY, []);

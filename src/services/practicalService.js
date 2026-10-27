@@ -7,26 +7,58 @@
 
 import defaultSubjects from '../data/subjects.json';
 import defaultPracticals from '../data/practicals.json';
+import { storageService } from './storageService.js';
 
 const STORAGE_KEY_SUBJECTS   = 'pracvault_subjects';
 const STORAGE_KEY_PRACTICALS = 'pracvault_practicals';
+const STORAGE_KEY_CATALOG_VERSION = 'pracvault_catalog_version';
+const CURRENT_CATALOG_VERSION = 2;
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
+function getDefaultData(key) {
+  const fallback = key === STORAGE_KEY_SUBJECTS ? defaultSubjects : defaultPracticals;
+  return JSON.parse(JSON.stringify(fallback));
+}
+
+function migrateCatalog() {
+  try {
+    const version = Number(localStorage.getItem(STORAGE_KEY_CATALOG_VERSION)) || 0;
+    if (version >= CURRENT_CATALOG_VERSION) return true;
+
+    localStorage.setItem(STORAGE_KEY_SUBJECTS, JSON.stringify(defaultSubjects));
+    localStorage.setItem(STORAGE_KEY_PRACTICALS, JSON.stringify(defaultPracticals));
+
+    const practicalIds = defaultPracticals.map(practical => practical.id);
+    if (!storageService.retainPracticalReferences(practicalIds)) {
+      throw new Error('Could not update saved bookmarks and history for the new catalog.');
+    }
+
+    localStorage.setItem(STORAGE_KEY_CATALOG_VERSION, String(CURRENT_CATALOG_VERSION));
+    return true;
+  } catch (error) {
+    console.error('[Codezy] Failed to migrate saved catalog:', error);
+    return false;
+  }
+}
+
 function load(key) {
+  if (!migrateCatalog()) return getDefaultData(key);
+
   try {
     const raw = localStorage.getItem(key);
     if (!raw) {
-      const fallback = key === STORAGE_KEY_SUBJECTS ? defaultSubjects : (key === STORAGE_KEY_PRACTICALS ? defaultPracticals : []);
+      const fallback = getDefaultData(key);
       if (fallback && fallback.length > 0) {
         save(key, fallback);
-        return JSON.parse(JSON.stringify(fallback));
+        return fallback;
       }
       return [];
     }
     return JSON.parse(raw);
-  } catch {
-    return key === STORAGE_KEY_SUBJECTS ? defaultSubjects : (key === STORAGE_KEY_PRACTICALS ? defaultPracticals : []);
+  } catch (error) {
+    console.error(`[Codezy] Failed reading '${key}':`, error);
+    return getDefaultData(key);
   }
 }
 

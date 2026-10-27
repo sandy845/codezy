@@ -122,7 +122,7 @@
         </div>
         <div class="info-row">
           <span class="info-key">Architecture:</span>
-          <span class="info-val">Vue 3 + Vite + Vuetify 3 + Workbox PWA</span>
+          <span class="info-val">Vue 3 + Vite + Workbox PWA</span>
         </div>
         <div class="info-row">
           <span class="info-key">Offline Capability:</span>
@@ -130,7 +130,7 @@
         </div>
         <div class="info-row">
           <span class="info-key">Library Size:</span>
-          <span class="info-val">4 Subjects, 40 Practicals bundled</span>
+          <span class="info-val">{{ libraryStats.subjectCount }} subjects, {{ libraryStats.practicalCount }} practicals available</span>
         </div>
       </div>
     </div>
@@ -140,17 +140,20 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { storageService } from '../services/storageService.js';
+import { practicalService } from '../services/practicalService.js';
 
 const currentTheme = ref('light');
 const codeFontSize = ref(14);
 const recentCount = ref(0);
 const bookmarkCount = ref(0);
+const libraryStats = ref({ subjectCount: 0, practicalCount: 0 });
 
 const loadSettings = () => {
   currentTheme.value = storageService.getTheme();
   codeFontSize.value = storageService.getCodeFontSize();
   recentCount.value = storageService.getRecentHistory().length;
   bookmarkCount.value = storageService.getBookmarks().length;
+  libraryStats.value = practicalService.getLibraryStats();
 };
 
 const setTheme = (theme) => {

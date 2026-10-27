@@ -270,6 +270,13 @@
       </template>
     </EmptyState>
 
+    <EmptyState
+      v-else-if="subject"
+      title="Practicals coming soon"
+      :description="`Practical content for ${subject.name} will be added as it is provided.`"
+      icon-name="Code2"
+    />
+
     <!-- Invalid Subject ID State -->
     <EmptyState
       v-else-if="!subject"
@@ -297,6 +304,8 @@ import {
   GitBranch,
   Database,
   Globe,
+  Shield,
+  BrainCircuit,
   Layers,
   Trash2,
   AlertTriangle,
@@ -392,6 +401,8 @@ const resolvedIcon = computed(() => {
     case 'GitBranch': return GitBranch;
     case 'Database': return Database;
     case 'Globe': return Globe;
+    case 'Shield': return Shield;
+    case 'BrainCircuit': return BrainCircuit;
     default: return Layers;
   }
 });
