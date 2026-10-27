@@ -1,0 +1,78 @@
+[
+  {
+    "id": "python-fundamentals",
+    "name": "Python Fundamentals",
+    "description": "Core Python programming concepts including data types, control flow, functions, OOP, and file handling.",
+    "icon": "FileCode",
+    "color": "#4263EB",
+    "practicalIds": [
+      "py-001",
+      "py-002",
+      "py-003",
+      "py-004",
+      "py-005",
+      "py-006",
+      "py-007",
+      "py-008",
+      "py-009",
+      "py-010"
+    ]
+  },
+  {
+    "id": "data-structures",
+    "name": "Data Structures",
+    "description": "Implementation and analysis of fundamental data structures: stacks, queues, linked lists, trees, graphs, and heaps.",
+    "icon": "GitBranch",
+    "color": "#7C3AED",
+    "practicalIds": [
+      "ds-001",
+      "ds-002",
+      "ds-003",
+      "ds-004",
+      "ds-005",
+      "ds-006",
+      "ds-007",
+      "ds-008",
+      "ds-009",
+      "ds-010"
+    ]
+  },
+  {
+    "id": "database-management",
+    "name": "Database Management",
+    "description": "Relational database design, DDL, DML, advanced SQL joins, subqueries, normalization, and stored procedures.",
+    "icon": "Database",
+    "color": "#059669",
+    "practicalIds": [
+      "dbms-001",
+      "dbms-002",
+      "dbms-003",
+      "dbms-004",
+      "dbms-005",
+      "dbms-006",
+      "dbms-007",
+      "dbms-008",
+      "dbms-009",
+      "dbms-010"
+    ]
+  },
+  {
+    "id": "web-development",
+    "name": "Web Development",
+    "description": "Modern frontend and backend development: HTML5, CSS Grid/Flexbox, DOM, Async Fetch, Node.js, and Express REST APIs.",
+    "icon": "Globe",
+    "color": "#D97706",
+    "practicalIds": [
+      "web-001",
+      "web-002",
+      "web-003",
+      "web-004",
+      "web-005",
+      "web-006",
+      "web-007",
+      "web-008",
+      "web-009",
+      "web-010"
+    ]
+  }
+]

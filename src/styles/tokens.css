@@ -1,0 +1,93 @@
+/* ==========================================================================
+   PracVault Design Tokens
+   Restrained, modern developer-tool design system
+   ========================================================================== */
+
+:root {
+  /* Brand colors */
+  --pv-primary: #4263EB;
+  --pv-primary-hover: #364FC7;
+  --pv-primary-light: #EDF2FF;
+  --pv-primary-border: #BAC8FF;
+
+  /* Surfaces & Backgrounds */
+  --pv-bg-main: #F7F8FA;
+  --pv-surface: #FFFFFF;
+  --pv-surface-alt: #F1F3F5;
+  --pv-surface-hover: #F8F9FA;
+
+  /* Text & Typography */
+  --pv-text-primary: #151821;
+  --pv-text-secondary: #667085;
+  --pv-text-muted: #868E96;
+  --pv-text-inverse: #FFFFFF;
+
+  /* Borders & Dividers */
+  --pv-border: #E5E7EB;
+  --pv-border-subtle: #F1F3F5;
+  --pv-border-hover: #D1D5DB;
+
+  /* Code Viewer Specifics */
+  --pv-code-bg: #111827;
+  --pv-code-header-bg: #1F2937;
+  --pv-code-border: #374151;
+  --pv-code-text: #E5E7EB;
+  --pv-code-line-number: #6B7280;
+
+  /* Accents & States */
+  --pv-success: #12B886;
+  --pv-success-light: #E6FCF5;
+  --pv-success-border: #96F2D7;
+  --pv-warning: #F59F00;
+  --pv-warning-light: #FFF9DB;
+  --pv-error: #FA5252;
+  --pv-error-light: #FFE3E3;
+  --pv-bookmark-gold: #F59F00;
+
+  /* Radii */
+  --pv-radius-sm: 8px;
+  --pv-radius-md: 12px;
+  --pv-radius-lg: 16px;
+  --pv-radius-full: 9999px;
+
+  /* Shadows */
+  --pv-shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --pv-shadow-md: 0 4px 6px -1px rgba(16, 24, 40, 0.08), 0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --pv-shadow-lg: 0 10px 15px -3px rgba(16, 24, 40, 0.08), 0 4px 6px -4px rgba(16, 24, 40, 0.04);
+  --pv-shadow-card: 0 2px 8px -2px rgba(16, 24, 40, 0.06);
+  --pv-shadow-card-hover: 0 12px 24px -4px rgba(16, 24, 40, 0.12);
+
+  /* Fonts */
+  --pv-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pv-font-mono: "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+  --pv-code-font-size: 14px;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --pv-bg-main: #0B0E14;
+  --pv-surface: #151921;
+  --pv-surface-alt: #1E232D;
+  --pv-surface-hover: #262C38;
+
+  --pv-text-primary: #F3F4F6;
+  --pv-text-secondary: #9CA3AF;
+  --pv-text-muted: #6B7280;
+
+  --pv-border: #2B3240;
+  --pv-border-subtle: #212734;
+  --pv-border-hover: #3E4657;
+
+  --pv-primary-light: #1E293B;
+  --pv-primary-border: #3B82F6;
+
+  --pv-code-bg: #090C10;
+  --pv-code-header-bg: #12161F;
+  --pv-code-border: #21262D;
+
+  --pv-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --pv-shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
+  --pv-shadow-lg: 0 12px 20px -3px rgba(0, 0, 0, 0.6);
+  --pv-shadow-card: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+  --pv-shadow-card-hover: 0 12px 24px -4px rgba(0, 0, 0, 0.6);
+}

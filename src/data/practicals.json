@@ -1,0 +1,759 @@
+[
+  {
+    "id": "py-001",
+    "subjectId": "python-fundamentals",
+    "number": 1,
+    "title": "Hello World and Basic I/O",
+    "objective": "Write a basic Python program to print messages and accept user input.",
+    "language": "python",
+    "code": "# Practical 1: Hello World and Basic I/O\n# Demonstrates print() and input() functions\n\ndef main():\n    print(\"Hello, World!\")\n    print(\"Welcome to Python Programming\")\n\n    name = input(\"Enter your name: \")\n    age = int(input(\"Enter your age: \"))\n\n    print(f\"\\nHello, {name}!\")\n    print(f\"You are {age} years old.\")\n    print(f\"In 10 years, you will be {age + 10} years old.\")\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Hello, World!\nWelcome to Python Programming\nEnter your name: Alice\nEnter your age: 20\n\nHello, Alice!\nYou are 20 years old.\nIn 10 years, you will be 30 years old.",
+    "explanation": "This program demonstrates the use of print() to display output and input() to read user input. The int() function converts string input to an integer. f-strings (formatted string literals) provide readable and efficient string formatting.",
+    "keywords": [
+      "hello world",
+      "input",
+      "output",
+      "print",
+      "f-string",
+      "basic",
+      "strings"
+    ]
+  },
+  {
+    "id": "py-002",
+    "subjectId": "python-fundamentals",
+    "number": 2,
+    "title": "Arithmetic Operations and Operators",
+    "objective": "Demonstrate arithmetic, comparison, and logical operators in Python.",
+    "language": "python",
+    "code": "# Practical 2: Arithmetic Operations and Operators\n\ndef arithmetic_demo(a, b):\n    print(f\"Values: a = {a}, b = {b}\")\n    print(f\"Addition:       {a} + {b} = {a + b}\")\n    print(f\"Subtraction:    {a} - {b} = {a - b}\")\n    print(f\"Multiplication: {a} * {b} = {a * b}\")\n    print(f\"Division:       {a} / {b} = {a / b:.2f}\")\n    print(f\"Floor Division: {a} // {b} = {a // b}\")\n    print(f\"Modulus:        {a} % {b} = {a % b}\")\n    print(f\"Exponentiation: {a} ** {b} = {a ** b}\")\n\ndef comparison_demo(a, b):\n    print(f\"\\nComparisons: a={a}, b={b}\")\n    print(f\"a == b : {a == b}\")\n    print(f\"a != b : {a != b}\")\n    print(f\"a >  b : {a > b}\")\n    print(f\"a <  b : {a < b}\")\n    print(f\"a >= b : {a >= b}\")\n    print(f\"a <= b : {a <= b}\")\n\ndef main():\n    arithmetic_demo(15, 4)\n    comparison_demo(15, 4)\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Values: a = 15, b = 4\nAddition:       15 + 4 = 19\nSubtraction:    15 - 4 = 11\nMultiplication: 15 * 4 = 60\nDivision:       15 / 4 = 3.75\nFloor Division: 15 // 4 = 3\nModulus:        15 % 4 = 3\nExponentiation: 15 ** 4 = 50625\n\nComparisons: a=15, b=4\na == b : False\na != b : True\na >  b : True\na <  b : False\na >= b : True\na <= b : False",
+    "explanation": "Python provides all standard arithmetic operators. The // operator performs integer (floor) division, % returns the remainder, and ** is exponentiation. Comparison operators return boolean values (True or False).",
+    "keywords": [
+      "arithmetic",
+      "operators",
+      "math",
+      "comparison",
+      "boolean",
+      "division",
+      "modulus"
+    ]
+  },
+  {
+    "id": "py-003",
+    "subjectId": "python-fundamentals",
+    "number": 3,
+    "title": "Control Flow: if-elif-else",
+    "objective": "Use conditional statements to control program flow based on user input.",
+    "language": "python",
+    "code": "# Practical 3: Control Flow - if, elif, else\n\ndef grade_calculator(marks):\n    \"\"\"Return letter grade and remark based on marks.\"\"\"\n    if marks >= 90:\n        grade = 'A+'\n        remark = 'Outstanding'\n    elif marks >= 80:\n        grade = 'A'\n        remark = 'Excellent'\n    elif marks >= 70:\n        grade = 'B'\n        remark = 'Good'\n    elif marks >= 60:\n        grade = 'C'\n        remark = 'Average'\n    elif marks >= 40:\n        grade = 'D'\n        remark = 'Pass'\n    else:\n        grade = 'F'\n        remark = 'Fail'\n    return grade, remark\n\ndef check_number(n):\n    \"\"\"Check properties of a number.\"\"\"\n    if n > 0:\n        print(f\"{n} is positive\")\n    elif n < 0:\n        print(f\"{n} is negative\")\n    else:\n        print(f\"{n} is zero\")\n\n    if n % 2 == 0:\n        print(f\"{n} is even\")\n    else:\n        print(f\"{n} is odd\")\n\ndef main():\n    marks = 85\n    grade, remark = grade_calculator(marks)\n    print(f\"Marks: {marks} -> Grade: {grade} ({remark})\")\n\n    check_number(-7)\n    check_number(12)\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Marks: 85 -> Grade: A (Excellent)\n-7 is negative\n-7 is odd\n12 is positive\n12 is even",
+    "explanation": "if-elif-else chains allow multi-way branching. Conditions are evaluated from top to bottom; the first true branch executes, and remaining branches are skipped.",
+    "keywords": [
+      "if",
+      "elif",
+      "else",
+      "conditional",
+      "grade",
+      "branching",
+      "control flow"
+    ]
+  },
+  {
+    "id": "py-004",
+    "subjectId": "python-fundamentals",
+    "number": 4,
+    "title": "Loops: for and while",
+    "objective": "Demonstrate iteration using for loops and while loops in Python.",
+    "language": "python",
+    "code": "# Practical 4: Loops - for and while\n\ndef for_loop_examples():\n    print(\"=== for loop examples ===\")\n\n    # Range-based iteration\n    print(\"Squares from 1 to 5:\")\n    for i in range(1, 6):\n        print(f\"  {i}^2 = {i**2}\")\n\n    # Enumerate list\n    fruits = [\"apple\", \"banana\", \"cherry\", \"date\"]\n    print(\"\\nFruits list:\")\n    for idx, fruit in enumerate(fruits, start=1):\n        print(f\"  {idx}. {fruit.capitalize()}\")\n\n    # Nested loops\n    print(\"\\nMultiplication Table (3x3):\")\n    for i in range(1, 4):\n        for j in range(1, 4):\n            print(f\"{i*j:4}\", end=\"\")\n        print()\n\ndef while_loop_examples():\n    print(\"\\n=== while loop examples ===\")\n    count = 5\n    print(\"Countdown:\")\n    while count > 0:\n        print(f\"  {count}...\")\n        count -= 1\n    print(\"  Go!\")\n\ndef main():\n    for_loop_examples()\n    while_loop_examples()\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "=== for loop examples ===\nSquares from 1 to 5:\n  1^2 = 1\n  2^2 = 4\n  3^2 = 9\n  4^2 = 16\n  5^2 = 25\n\nFruits list:\n  1. Apple\n  2. Banana\n  3. Cherry\n  4. Date\n\nMultiplication Table (3x3):\n   1   2   3\n   2   4   6\n   3   6   9\n\n=== while loop examples ===\nCountdown:\n  5...\n  4...\n  3...\n  2...\n  1...\n  Go!",
+    "explanation": "Python provides for loops for definite sequence iteration and while loops for condition-based iteration. range() generates number sequences, and enumerate() provides indexed iteration.",
+    "keywords": [
+      "for",
+      "while",
+      "loop",
+      "range",
+      "enumerate",
+      "iteration",
+      "nested"
+    ]
+  },
+  {
+    "id": "py-005",
+    "subjectId": "python-fundamentals",
+    "number": 5,
+    "title": "Functions and Recursion",
+    "objective": "Define and use functions, including recursive algorithms in Python.",
+    "language": "python",
+    "code": "# Practical 5: Functions and Recursion\n\ndef factorial(n):\n    \"\"\"Compute n! recursively.\"\"\"\n    if n < 0:\n        raise ValueError(\"Factorial undefined for negative numbers\")\n    if n in (0, 1):\n        return 1\n    return n * factorial(n - 1)\n\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number.\"\"\"\n    if n <= 0:\n        return 0\n    if n == 1:\n        return 1\n    return fibonacci(n - 1) + fibonacci(n - 2)\n\ndef is_palindrome(text):\n    \"\"\"Check if a string is a palindrome.\"\"\"\n    cleaned = \"\".join(ch.lower() for ch in text if ch.isalnum())\n    return cleaned == cleaned[::-1]\n\ndef main():\n    print(\"Factorials:\")\n    for n in range(6):\n        print(f\"  {n}! = {factorial(n)}\")\n\n    print(\"\\nFibonacci (first 7 terms):\")\n    print(\" \", [fibonacci(i) for i in range(7)])\n\n    print(\"\\nPalindrome tests:\")\n    for w in [\"racecar\", \"hello\", \"A man a plan a canal Panama\"]:\n        print(f\"  '{w}' -> {is_palindrome(w)}\")\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Factorials:\n  0! = 1\n  1! = 1\n  2! = 2\n  3! = 6\n  4! = 24\n  5! = 120\n\nFibonacci (first 7 terms):\n  [0, 1, 1, 2, 3, 5, 8]\n\nPalindrome tests:\n  'racecar' -> True\n  'hello' -> False\n  'A man a plan a canal Panama' -> True",
+    "explanation": "Functions encapsulate reusable units of logic. Recursive functions call themselves with smaller inputs until reaching a base case. Slicing with [::-1] provides an idiomatic string reversal in Python.",
+    "keywords": [
+      "function",
+      "recursion",
+      "factorial",
+      "fibonacci",
+      "palindrome",
+      "base case"
+    ]
+  },
+  {
+    "id": "py-006",
+    "subjectId": "python-fundamentals",
+    "number": 6,
+    "title": "Lists, Tuples, and Sets",
+    "objective": "Demonstrate operations on Python list, tuple, and set collections.",
+    "language": "python",
+    "code": "# Practical 6: Lists, Tuples, and Sets\n\ndef list_demo():\n    print(\"=== Lists ===\")\n    nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]\n    print(f\"Original: {nums}\")\n    print(f\"Sorted:   {sorted(nums)}\")\n    print(f\"Unique:   {sorted(set(nums))}\")\n\n    # List comprehension\n    squares = [x**2 for x in range(1, 8)]\n    evens = [x for x in nums if x % 2 == 0]\n    print(f\"Squares:  {squares}\")\n    print(f\"Evens:    {evens}\")\n\ndef tuple_demo():\n    print(\"\\n=== Tuples ===\")\n    point = (10, 20)\n    x, y = point\n    print(f\"Point: {point}, unpacked: x={x}, y={y}\")\n\ndef set_demo():\n    print(\"\\n=== Sets ===\")\n    a = {1, 2, 3, 4, 5}\n    b = {4, 5, 6, 7, 8}\n    print(f\"A = {a}, B = {b}\")\n    print(f\"Union (A | B):        {a | b}\")\n    print(f\"Intersection (A & B): {a & b}\")\n    print(f\"Difference (A - B):   {a - b}\")\n\ndef main():\n    list_demo()\n    tuple_demo()\n    set_demo()\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "=== Lists ===\nOriginal: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]\nSorted:   [1, 1, 2, 3, 3, 4, 5, 5, 6, 9]\nUnique:   [1, 2, 3, 4, 5, 6, 9]\nSquares:  [1, 4, 9, 16, 25, 36, 49]\nEvens:    [4, 2, 6]\n\n=== Tuples ===\nPoint: (10, 20), unpacked: x=10, y=20\n\n=== Sets ===\nA = {1, 2, 3, 4, 5}, B = {4, 5, 6, 7, 8}\nUnion (A | B):        {1, 2, 3, 4, 5, 6, 7, 8}\nIntersection (A & B): {4, 5}\nDifference (A - B):   {1, 2, 3}",
+    "explanation": "Lists are mutable ordered sequences. Tuples are immutable and support tuple unpacking. Sets enforce uniqueness and support mathematical set operations like union, intersection, and difference.",
+    "keywords": [
+      "list",
+      "tuple",
+      "set",
+      "comprehension",
+      "slice",
+      "union",
+      "intersection"
+    ]
+  },
+  {
+    "id": "py-007",
+    "subjectId": "python-fundamentals",
+    "number": 7,
+    "title": "Dictionaries and String Methods",
+    "objective": "Use Python dictionaries and demonstrate common string operations.",
+    "language": "python",
+    "code": "# Practical 7: Dictionaries and String Methods\n\ndef dict_demo():\n    print(\"=== Dictionaries ===\")\n    student = {\n        \"name\": \"Alice\",\n        \"age\": 20,\n        \"marks\": {\"math\": 92, \"science\": 88},\n        \"active\": True\n    }\n    print(f\"Name: {student['name']}\")\n    print(f\"City: {student.get('city', 'Not Specified')}\")\n\n    for subject, score in student[\"marks\"].items():\n        print(f\"  {subject.capitalize()}: {score}\")\n\n    # Dict comprehension\n    lengths = {w: len(w) for w in [\"python\", \"vue\", \"vite\", \"javascript\"]}\n    print(f\"Word lengths: {lengths}\")\n\ndef string_demo():\n    print(\"\\n=== String Methods ===\")\n    text = \"  Data Science and Machine Learning  \"\n    print(f\"Stripped:    '{text.strip()}'\")\n    print(f\"Uppercase:   '{text.strip().upper()}'\")\n    print(f\"Replaced:    '{text.strip().replace('Data', 'AI')}'\")\n    print(f\"Split:        {text.strip().split(' ')}\")\n    print(f\"Joined:       {'-'.join(['code', 'vault', 'fast'])}\")\n\ndef main():\n    dict_demo()\n    string_demo()\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "=== Dictionaries ===\nName: Alice\nCity: Not Specified\n  Math: 92\n  Science: 88\nWord lengths: {'python': 6, 'vue': 3, 'vite': 4, 'javascript': 10}\n\n=== String Methods ===\nStripped:    'Data Science and Machine Learning'\nUppercase:   'DATA SCIENCE AND MACHINE LEARNING'\nReplaced:    'AI Science and Machine Learning'\nSplit:        ['Data', 'Science', 'and', 'Machine', 'Learning']\nJoined:       code-vault-fast",
+    "explanation": "Dictionaries store key-value pairs with O(1) average lookup. The get() method provides safe defaults for missing keys. String methods (strip, upper, replace, split, join) manipulate text immutably.",
+    "keywords": [
+      "dictionary",
+      "dict",
+      "string",
+      "strip",
+      "split",
+      "join",
+      "lookup"
+    ]
+  },
+  {
+    "id": "py-008",
+    "subjectId": "python-fundamentals",
+    "number": 8,
+    "title": "File Handling: Read and Write",
+    "objective": "Read from and write to text files using Python context managers.",
+    "language": "python",
+    "code": "# Practical 8: File Handling\nimport os\n\ndef write_demo(filename, lines):\n    with open(filename, \"w\", encoding=\"utf-8\") as f:\n        for line in lines:\n            f.write(line + \"\\n\")\n    print(f\"Wrote {len(lines)} lines to '{filename}'.\")\n\ndef read_demo(filename):\n    if not os.path.exists(filename):\n        print(f\"Error: '{filename}' not found.\")\n        return\n    with open(filename, \"r\", encoding=\"utf-8\") as f:\n        lines = f.readlines()\n    print(f\"Reading '{filename}':\")\n    for i, line in enumerate(lines, 1):\n        print(f\"  {i}: {line.rstrip()}\")\n\ndef main():\n    filename = \"demo_pracvault.txt\"\n    sample_data = [\n        \"PracVault - Your Practicals. One Vault. Zero Hassle.\",\n        \"Python file handling with the 'with' statement.\",\n        \"Automatic resource cleanup guaranteed.\"\n    ]\n    write_demo(filename, sample_data)\n    read_demo(filename)\n\n    # Cleanup demo file\n    if os.path.exists(filename):\n        os.remove(filename)\n        print(f\"Cleaned up temporary file '{filename}'.\")\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Wrote 3 lines to 'demo_pracvault.txt'.\nReading 'demo_pracvault.txt':\n  1: PracVault - Your Practicals. One Vault. Zero Hassle.\n  2: Python file handling with the 'with' statement.\n  3: Automatic resource cleanup guaranteed.\nCleaned up temporary file 'demo_pracvault.txt'.",
+    "explanation": "The 'with' statement acts as a context manager that ensures files are properly closed even if exceptions occur. Always specify encoding='utf-8' for reliable cross-platform text processing.",
+    "keywords": [
+      "file",
+      "read",
+      "write",
+      "open",
+      "with",
+      "context manager",
+      "cleanup"
+    ]
+  },
+  {
+    "id": "py-009",
+    "subjectId": "python-fundamentals",
+    "number": 9,
+    "title": "Exception Handling",
+    "objective": "Handle runtime errors gracefully using try-except-finally in Python.",
+    "language": "python",
+    "code": "# Practical 9: Exception Handling\n\ndef safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        print(\"  Error: Cannot divide by zero.\")\n        return None\n    except TypeError as e:\n        print(f\"  TypeError: {e}\")\n        return None\n    finally:\n        print(\"  (division attempt completed)\")\n\ndef parse_integer(val):\n    try:\n        return int(val)\n    except (ValueError, TypeError):\n        return -1\n\ndef main():\n    print(\"Testing safe division:\")\n    print(\"10 / 2 =\", safe_divide(10, 2))\n    print(\"10 / 0 =\", safe_divide(10, 0))\n\n    print(\"\\nTesting integer parsing:\")\n    print(\"'42'  ->\", parse_integer(\"42\"))\n    print(\"'abc' ->\", parse_integer(\"abc\"))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Testing safe division:\n  (division attempt completed)\n10 / 2 = 5.0\n  Error: Cannot divide by zero.\n  (division attempt completed)\n10 / 0 = None\n\nTesting integer parsing:\n'42'  -> 42\n'abc' -> -1",
+    "explanation": "try-except blocks intercept errors, preventing program crashes. Multiple exceptions can be caught individually or in tuples. The finally block always executes regardless of whether an exception occurred.",
+    "keywords": [
+      "exception",
+      "try",
+      "except",
+      "finally",
+      "ZeroDivisionError",
+      "error handling"
+    ]
+  },
+  {
+    "id": "py-010",
+    "subjectId": "python-fundamentals",
+    "number": 10,
+    "title": "Object-Oriented Programming: Classes",
+    "objective": "Implement classes with attributes, methods, inheritance, and encapsulation in Python.",
+    "language": "python",
+    "code": "# Practical 10: Object-Oriented Programming\n\nclass BankAccount:\n    \"\"\"Demonstrates encapsulation with private attributes.\"\"\"\n    def __init__(self, owner, balance=0.0):\n        self.owner = owner\n        self._balance = balance\n\n    @property\n    def balance(self):\n        return self._balance\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError(\"Deposit must be positive.\")\n        self._balance += amount\n        return f\"Deposited ₹{amount:.2f}. Balance: ₹{self._balance:.2f}\"\n\n    def withdraw(self, amount):\n        if amount <= 0 or amount > self._balance:\n            raise ValueError(\"Invalid withdrawal amount.\")\n        self._balance -= amount\n        return f\"Withdrew ₹{amount:.2f}. Balance: ₹{self._balance:.2f}\"\n\n    def __str__(self):\n        return f\"Account({self.owner}: ₹{self._balance:.2f})\"\n\nclass SavingsAccount(BankAccount):\n    \"\"\"Subclass adding interest calculation.\"\"\"\n    def __init__(self, owner, balance=0.0, interest_rate=0.04):\n        super().__init__(owner, balance)\n        self.interest_rate = interest_rate\n\n    def apply_interest(self):\n        interest = self._balance * self.interest_rate\n        self.deposit(interest)\n        return f\"Added ₹{interest:.2f} interest.\"\n\ndef main():\n    acc = SavingsAccount(\"Alice\", 1000.0)\n    print(\"Initial:\", acc)\n    print(acc.deposit(500))\n    print(acc.withdraw(200))\n    print(acc.apply_interest())\n    print(\"Final:\", acc)\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Initial: Account(Alice: ₹1000.00)\nDeposited ₹500.00. Balance: ₹1500.00\nWithdrew ₹200.00. Balance: ₹1300.00\nDeposited ₹52.00. Balance: ₹1352.00\nAdded ₹52.00 interest.\nFinal: Account(Alice: ₹1352.00)",
+    "explanation": "OOP principles: Encapsulation hides internal state behind properties. Inheritance allows subclasses to reuse and extend parent functionality using super().",
+    "keywords": [
+      "OOP",
+      "class",
+      "inheritance",
+      "encapsulation",
+      "property",
+      "super"
+    ]
+  },
+  {
+    "id": "ds-001",
+    "subjectId": "data-structures",
+    "number": 1,
+    "title": "Array Operations",
+    "objective": "Implement basic array operations: traversal, insertion, deletion, and linear search.",
+    "language": "python",
+    "code": "# Practical 1: Array Operations\n\nclass Array:\n    def __init__(self, capacity=10):\n        self.data = []\n        self.capacity = capacity\n\n    def insert(self, value, index=None):\n        if len(self.data) >= self.capacity:\n            raise OverflowError(\"Array full\")\n        if index is None:\n            self.data.append(value)\n        else:\n            self.data.insert(index, value)\n\n    def delete(self, value):\n        if value in self.data:\n            self.data.remove(value)\n            return True\n        return False\n\n    def search(self, value):\n        for i, v in enumerate(self.data):\n            if v == value:\n                return i\n        return -1\n\n    def __str__(self):\n        return str(self.data)\n\ndef main():\n    arr = Array(capacity=8)\n    for val in [10, 20, 30, 40, 50]:\n        arr.insert(val)\n    print(\"Initial array:\", arr)\n\n    arr.insert(25, index=2)\n    print(\"After inserting 25 at index 2:\", arr)\n\n    print(\"Search 30: index\", arr.search(30))\n    print(\"Search 99: index\", arr.search(99))\n\n    arr.delete(20)\n    print(\"After deleting 20:\", arr)\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Initial array: [10, 20, 30, 40, 50]\nAfter inserting 25 at index 2: [10, 20, 25, 30, 40, 50]\nSearch 30: index 3\nSearch 99: index -1\nAfter deleting 20: [10, 25, 30, 40, 50]",
+    "explanation": "Arrays store elements in contiguous memory. Random access is O(1), but insertion and deletion at arbitrary positions require element shifting, taking O(n) time.",
+    "keywords": [
+      "array",
+      "insertion",
+      "deletion",
+      "linear search",
+      "traversal"
+    ]
+  },
+  {
+    "id": "ds-002",
+    "subjectId": "data-structures",
+    "number": 2,
+    "title": "Stack: Push, Pop, Peek",
+    "objective": "Implement a Stack data structure and demonstrate LIFO operations and balanced brackets check.",
+    "language": "python",
+    "code": "# Practical 2: Stack - Push, Pop, Peek\n\nclass Stack:\n    def __init__(self):\n        self._items = []\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError(\"pop from empty stack\")\n        return self._items.pop()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError(\"peek at empty stack\")\n        return self._items[-1]\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def size(self):\n        return len(self._items)\n\ndef is_balanced(expression):\n    stack = Stack()\n    brackets = {')': '(', '}': '{', ']': '['}\n    for char in expression:\n        if char in \"({[\":\n            stack.push(char)\n        elif char in \")}]\":\n            if stack.is_empty() or stack.pop() != brackets[char]:\n                return False\n    return stack.is_empty()\n\ndef main():\n    s = Stack()\n    for v in [10, 20, 30]:\n        s.push(v)\n    print(\"Top element:\", s.peek())\n    print(\"Popped:\", s.pop())\n    print(\"Size:\", s.size())\n\n    print(\"\\nBracket checks:\")\n    for expr in [\"{[()]}\", \"{[(])}\", \"((())\"]:\n        print(f\"  '{expr}' -> {is_balanced(expr)}\")\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Top element: 30\nPopped: 30\nSize: 2\n\nBracket checks:\n  '{[()]}' -> True\n  '{[(])}' -> False\n  '((())' -> False",
+    "explanation": "Stacks follow Last-In-First-Out (LIFO). All push, pop, and peek operations take O(1) time. Stacks are essential in parsing, syntax validation, undo operations, and call stacks.",
+    "keywords": [
+      "stack",
+      "LIFO",
+      "push",
+      "pop",
+      "peek",
+      "balanced brackets"
+    ]
+  },
+  {
+    "id": "ds-003",
+    "subjectId": "data-structures",
+    "number": 3,
+    "title": "Queue: Enqueue and Dequeue",
+    "objective": "Implement a Queue data structure and demonstrate FIFO operations.",
+    "language": "python",
+    "code": "# Practical 3: Queue - Enqueue and Dequeue\nfrom collections import deque\n\nclass Queue:\n    def __init__(self):\n        self._data = deque()\n\n    def enqueue(self, item):\n        self._data.append(item)\n\n    def dequeue(self):\n        if self.is_empty():\n            raise IndexError(\"dequeue from empty queue\")\n        return self._data.popleft()\n\n    def front(self):\n        if self.is_empty():\n            raise IndexError(\"queue is empty\")\n        return self._data[0]\n\n    def is_empty(self):\n        return len(self._data) == 0\n\n    def size(self):\n        return len(self._data)\n\ndef main():\n    q = Queue()\n    for task in [\"Task 1\", \"Task 2\", \"Task 3\"]:\n        q.enqueue(task)\n        print(f\"Enqueued: {task}\")\n\n    print(f\"\\nFront element: {q.front()}\")\n    print(\"Dequeuing tasks:\")\n    while not q.is_empty():\n        print(f\"  Processing: {q.dequeue()}\")\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Enqueued: Task 1\nEnqueued: Task 2\nEnqueued: Task 3\n\nFront element: Task 1\nDequeuing tasks:\n  Processing: Task 1\n  Processing: Task 2\n  Processing: Task 3",
+    "explanation": "Queues operate on First-In-First-Out (FIFO). Using collections.deque provides O(1) time complexity for both enqueue (append) and dequeue (popleft).",
+    "keywords": [
+      "queue",
+      "FIFO",
+      "enqueue",
+      "dequeue",
+      "deque",
+      "collections"
+    ]
+  },
+  {
+    "id": "ds-004",
+    "subjectId": "data-structures",
+    "number": 4,
+    "title": "Singly Linked List",
+    "objective": "Implement a singly linked list with insertion, deletion, and reversal.",
+    "language": "python",
+    "code": "# Practical 4: Singly Linked List\n\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def insert_at_head(self, data):\n        new_node = Node(data)\n        new_node.next = self.head\n        self.head = new_node\n\n    def insert_at_tail(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        curr = self.head\n        while curr.next:\n            curr = curr.next\n        curr.next = new_node\n\n    def reverse(self):\n        prev = None\n        curr = self.head\n        while curr:\n            next_node = curr.next\n            curr.next = prev\n            prev = curr\n            curr = next_node\n        self.head = prev\n\n    def to_list(self):\n        res = []\n        curr = self.head\n        while curr:\n            res.append(curr.data)\n            curr = curr.next\n        return res\n\ndef main():\n    ll = LinkedList()\n    for val in [10, 20, 30, 40]:\n        ll.insert_at_tail(val)\n    print(\"Original list:\", ll.to_list())\n\n    ll.insert_at_head(5)\n    print(\"After head insert 5:\", ll.to_list())\n\n    ll.reverse()\n    print(\"After reversal:\", ll.to_list())\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Original list: [10, 20, 30, 40]\nAfter head insert 5: [5, 10, 20, 30, 40]\nAfter reversal: [40, 30, 20, 10, 5]",
+    "explanation": "A Linked List links nodes via pointers. Insertion at the head is O(1). In-place reversal takes O(n) time and O(1) space using three pointers (prev, curr, next_node).",
+    "keywords": [
+      "linked list",
+      "node",
+      "head",
+      "tail",
+      "reverse",
+      "pointers"
+    ]
+  },
+  {
+    "id": "ds-005",
+    "subjectId": "data-structures",
+    "number": 5,
+    "title": "Binary Search Tree",
+    "objective": "Implement a BST with insertion, search, and inorder traversal.",
+    "language": "python",
+    "code": "# Practical 5: Binary Search Tree (BST)\n\nclass BSTNode:\n    def __init__(self, key):\n        self.key = key\n        self.left = None\n        self.right = None\n\nclass BST:\n    def __init__(self):\n        self.root = None\n\n    def insert(self, key):\n        self.root = self._insert(self.root, key)\n\n    def _insert(self, node, key):\n        if not node:\n            return BSTNode(key)\n        if key < node.key:\n            node.left = self._insert(node.left, key)\n        elif key > node.key:\n            node.right = self._insert(node.right, key)\n        return node\n\n    def search(self, key):\n        curr = self.root\n        while curr:\n            if curr.key == key:\n                return True\n            curr = curr.left if key < curr.key else curr.right\n        return False\n\n    def inorder(self):\n        res = []\n        def _inorder(node):\n            if node:\n                _inorder(node.left)\n                res.append(node.key)\n                _inorder(node.right)\n        _inorder(self.root)\n        return res\n\ndef main():\n    bst = BST()\n    for v in [50, 30, 70, 20, 40, 60, 80]:\n        bst.insert(v)\n\n    print(\"Inorder traversal (sorted):\", bst.inorder())\n    print(\"Search 40:\", bst.search(40))\n    print(\"Search 99:\", bst.search(99))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Inorder traversal (sorted): [20, 30, 40, 50, 60, 70, 80]\nSearch 40: True\nSearch 99: False",
+    "explanation": "BST keeps left children smaller and right children larger than the parent. Inorder traversal (Left-Root-Right) yields elements in sorted order. Search and insert are O(log n) on balanced trees.",
+    "keywords": [
+      "BST",
+      "binary search tree",
+      "inorder",
+      "traversal",
+      "search",
+      "tree"
+    ]
+  },
+  {
+    "id": "ds-006",
+    "subjectId": "data-structures",
+    "number": 6,
+    "title": "Sorting Algorithms",
+    "objective": "Implement and compare Bubble Sort, Selection Sort, and Insertion Sort.",
+    "language": "python",
+    "code": "# Practical 6: Sorting Algorithms\n\ndef bubble_sort(arr):\n    a = arr.copy()\n    n = len(a)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if a[j] > a[j + 1]:\n                a[j], a[j + 1] = a[j + 1], a[j]\n                swapped = True\n        if not swapped:\n            break\n    return a\n\ndef selection_sort(arr):\n    a = arr.copy()\n    n = len(a)\n    for i in range(n):\n        min_idx = i\n        for j in range(i + 1, n):\n            if a[j] < a[min_idx]:\n                min_idx = j\n        a[i], a[min_idx] = a[min_idx], a[i]\n    return a\n\ndef insertion_sort(arr):\n    a = arr.copy()\n    for i in range(1, len(a)):\n        key = a[i]\n        j = i - 1\n        while j >= 0 and a[j] > key:\n            a[j + 1] = a[j]\n            j -= 1\n        a[j + 1] = key\n    return a\n\ndef main():\n    data = [64, 34, 25, 12, 22, 11, 90]\n    print(\"Original:       \", data)\n    print(\"Bubble Sort:    \", bubble_sort(data))\n    print(\"Selection Sort: \", selection_sort(data))\n    print(\"Insertion Sort: \", insertion_sort(data))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Original:        [64, 34, 25, 12, 22, 11, 90]\nBubble Sort:     [11, 12, 22, 25, 34, 64, 90]\nSelection Sort:  [11, 12, 22, 25, 34, 64, 90]\nInsertion Sort:  [11, 12, 22, 25, 34, 64, 90]",
+    "explanation": "Bubble, selection, and insertion sort have O(n^2) worst-case time complexity. Insertion sort excels on nearly-sorted data with O(n) best-case performance.",
+    "keywords": [
+      "bubble sort",
+      "selection sort",
+      "insertion sort",
+      "sorting",
+      "algorithm"
+    ]
+  },
+  {
+    "id": "ds-007",
+    "subjectId": "data-structures",
+    "number": 7,
+    "title": "Hashing and Hash Tables",
+    "objective": "Implement a hash table with chaining to handle collisions.",
+    "language": "python",
+    "code": "# Practical 7: Hash Table with Chaining\n\nclass HashTable:\n    def __init__(self, size=10):\n        self.size = size\n        self.table = [[] for _ in range(size)]\n\n    def _hash(self, key):\n        return hash(key) % self.size\n\n    def put(self, key, value):\n        idx = self._hash(key)\n        for i, (k, v) in enumerate(self.table[idx]):\n            if k == key:\n                self.table[idx][i] = (key, value)\n                return\n        self.table[idx].append((key, value))\n\n    def get(self, key, default=None):\n        idx = self._hash(key)\n        for k, v in self.table[idx]:\n            if k == key:\n                return v\n        return default\n\ndef main():\n    ht = HashTable(size=7)\n    ht.put(\"apple\", 1.50)\n    ht.put(\"banana\", 0.75)\n    ht.put(\"cherry\", 2.25)\n\n    print(\"apple  ->\", ht.get(\"apple\"))\n    print(\"banana ->\", ht.get(\"banana\"))\n    print(\"orange ->\", ht.get(\"orange\", \"Not found\"))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "apple  -> 1.5\nbanana -> 0.75\norange -> Not found",
+    "explanation": "Hash tables provide average O(1) insert, update, and lookup. Collisions are handled via separate chaining (buckets storing key-value pairs).",
+    "keywords": [
+      "hash table",
+      "hashing",
+      "collision",
+      "chaining",
+      "O(1)"
+    ]
+  },
+  {
+    "id": "ds-008",
+    "subjectId": "data-structures",
+    "number": 8,
+    "title": "Graph: BFS and DFS Traversal",
+    "objective": "Represent a graph using adjacency lists and implement BFS and DFS.",
+    "language": "python",
+    "code": "# Practical 8: Graph - BFS and DFS\nfrom collections import deque\n\nclass Graph:\n    def __init__(self):\n        self.adj = {}\n\n    def add_edge(self, u, v):\n        self.adj.setdefault(u, []).append(v)\n        self.adj.setdefault(v, []).append(u)\n\n    def bfs(self, start):\n        visited = {start}\n        order = []\n        q = deque([start])\n        while q:\n            node = q.popleft()\n            order.append(node)\n            for neighbor in self.adj.get(node, []):\n                if neighbor not in visited:\n                    visited.add(neighbor)\n                    q.append(neighbor)\n        return order\n\n    def dfs(self, start):\n        visited = set()\n        order = []\n        def _dfs(node):\n            visited.add(node)\n            order.append(node)\n            for neighbor in self.adj.get(node, []):\n                if neighbor not in visited:\n                    _dfs(neighbor)\n        _dfs(start)\n        return order\n\ndef main():\n    g = Graph()\n    edges = [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6)]\n    for u, v in edges:\n        g.add_edge(u, v)\n\n    print(\"BFS from 1:\", g.bfs(1))\n    print(\"DFS from 1:\", g.dfs(1))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "BFS from 1: [1, 2, 3, 4, 5, 6]\nDFS from 1: [1, 2, 4, 5, 3, 6]",
+    "explanation": "BFS explores neighbors level-by-level using a queue (finding the shortest path in unweighted graphs). DFS explores branch paths deeply using recursion or a stack.",
+    "keywords": [
+      "graph",
+      "BFS",
+      "DFS",
+      "breadth first",
+      "depth first",
+      "traversal"
+    ]
+  },
+  {
+    "id": "ds-009",
+    "subjectId": "data-structures",
+    "number": 9,
+    "title": "Merge Sort and Quick Sort",
+    "objective": "Implement and compare divide-and-conquer sorting algorithms.",
+    "language": "python",
+    "code": "# Practical 9: Merge Sort and Quick Sort\n\ndef merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    res = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            res.append(left[i]); i += 1\n        else:\n            res.append(right[j]); j += 1\n    res.extend(left[i:])\n    res.extend(right[j:])\n    return res\n\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\ndef main():\n    arr = [38, 27, 43, 3, 9, 82, 10]\n    print(\"Input:     \", arr)\n    print(\"Merge Sort:\", merge_sort(arr))\n    print(\"Quick Sort:\", quick_sort(arr))\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Input:      [38, 27, 43, 3, 9, 82, 10]\nMerge Sort: [3, 9, 10, 27, 38, 43, 82]\nQuick Sort: [3, 9, 10, 27, 38, 43, 82]",
+    "explanation": "Both algorithms use divide-and-conquer. Merge Sort guarantees O(n log n) with O(n) space. Quick Sort achieves O(n log n) average performance with in-place partitioning.",
+    "keywords": [
+      "merge sort",
+      "quick sort",
+      "divide and conquer",
+      "O(n log n)",
+      "sorting"
+    ]
+  },
+  {
+    "id": "ds-010",
+    "subjectId": "data-structures",
+    "number": 10,
+    "title": "Heap and Priority Queue",
+    "objective": "Implement a Min-Heap and Priority Queue using heapq.",
+    "language": "python",
+    "code": "# Practical 10: Heap and Priority Queue\nimport heapq\n\nclass PriorityQueue:\n    def __init__(self):\n        self._queue = []\n        self._index = 0\n\n    def push(self, item, priority):\n        heapq.heappush(self._queue, (priority, self._index, item))\n        self._index += 1\n\n    def pop(self):\n        return heapq.heappop(self._queue)[-1]\n\n    def is_empty(self):\n        return len(self._queue) == 0\n\ndef main():\n    pq = PriorityQueue()\n    pq.push(\"Bug Fix\", 3)\n    pq.push(\"Critical Outage\", 1)\n    pq.push(\"Code Review\", 2)\n\n    print(\"Serving tasks in priority order:\")\n    while not pq.is_empty():\n        print(\"  Processed:\", pq.pop())\n\nif __name__ == \"__main__\":\n    main()",
+    "expectedOutput": "Serving tasks in priority order:\n  Processed: Critical Outage\n  Processed: Code Review\n  Processed: Bug Fix",
+    "explanation": "Min-heaps maintain the smallest element at the root. Insertion and removal of the minimum are O(log n), making them ideal for priority queue scheduling.",
+    "keywords": [
+      "heap",
+      "min-heap",
+      "priority queue",
+      "heapq",
+      "O(log n)"
+    ]
+  },
+  {
+    "id": "dbms-001",
+    "subjectId": "database-management",
+    "number": 1,
+    "title": "CREATE TABLE and Basic DDL",
+    "objective": "Demonstrate DDL commands: CREATE, ALTER, DROP, TRUNCATE in SQL.",
+    "language": "sql",
+    "code": "-- Practical 1: DDL Commands\nCREATE TABLE Students (\n    student_id      INT PRIMARY KEY AUTO_INCREMENT,\n    first_name      VARCHAR(50) NOT NULL,\n    last_name       VARCHAR(50) NOT NULL,\n    email           VARCHAR(100) UNIQUE NOT NULL,\n    enrollment_date DATE DEFAULT (CURRENT_DATE),\n    gpa             DECIMAL(3, 2) CHECK (gpa BETWEEN 0.00 AND 10.00)\n);\n\nCREATE TABLE Courses (\n    course_id   INT PRIMARY KEY AUTO_INCREMENT,\n    course_code VARCHAR(10) UNIQUE NOT NULL,\n    course_name VARCHAR(100) NOT NULL,\n    credits     INT NOT NULL CHECK (credits > 0)\n);\n\n-- Alter table to add phone column\nALTER TABLE Students ADD COLUMN phone VARCHAR(20);\n\n-- Describe table\nDESCRIBE Students;",
+    "expectedOutput": "Query OK, 0 rows affected\nQuery OK, 0 rows affected\nQuery OK, 0 rows affected\n+-----------------+--------------+------+-----+---------+----------------+\n| Field           | Type         | Null | Key | Default | Extra          |\n+-----------------+--------------+------+-----+---------+----------------+\n| student_id      | int          | NO   | PRI | NULL    | auto_increment |\n| first_name      | varchar(50)  | NO   |     | NULL    |                |\n| last_name       | varchar(50)  | NO   |     | NULL    |                |\n| email           | varchar(100) | NO   | UNI | NULL    |                |\n| enrollment_date | date         | YES  |     | curdate |                |\n| gpa             | decimal(3,2) | YES  |     | NULL    |                |\n| phone           | varchar(20)  | YES  |     | NULL    |                |\n+-----------------+--------------+------+-----+---------+----------------+",
+    "explanation": "DDL statements define schema structures. PRIMARY KEY uniquely identifies rows, UNIQUE prevents duplicates, and CHECK enforces data validity rules.",
+    "keywords": [
+      "DDL",
+      "CREATE TABLE",
+      "ALTER TABLE",
+      "PRIMARY KEY",
+      "CHECK",
+      "schema"
+    ]
+  },
+  {
+    "id": "dbms-002",
+    "subjectId": "database-management",
+    "number": 2,
+    "title": "INSERT, UPDATE, DELETE (DML)",
+    "objective": "Demonstrate DML commands to manipulate data in relational tables.",
+    "language": "sql",
+    "code": "-- Practical 2: DML Commands\nINSERT INTO Students (first_name, last_name, email, gpa) VALUES\n('Alice', 'Johnson', 'alice@uni.edu', 8.9),\n('Bob', 'Smith', 'bob@uni.edu', 7.5),\n('Carol', 'White', 'carol@uni.edu', 9.2);\n\n-- Update Alice's GPA\nUPDATE Students\nSET gpa = 9.1\nWHERE email = 'alice@uni.edu';\n\n-- Delete student record\nDELETE FROM Students\nWHERE email = 'bob@uni.edu';\n\n-- Verify remaining records\nSELECT * FROM Students ORDER BY student_id;",
+    "expectedOutput": "Query OK, 3 rows affected\nQuery OK, 1 row affected\nQuery OK, 1 row affected\n+------------+------------+-----------+---------------+-----------------+------+\n| student_id | first_name | last_name | email         | enrollment_date | gpa  |\n+------------+------------+-----------+---------------+-----------------+------+\n|          1 | Alice      | Johnson   | alice@uni.edu | 2026-10-27      | 9.10 |\n|          3 | Carol      | White     | carol@uni.edu | 2026-10-27      | 9.20 |\n+------------+------------+-----------+---------------+-----------------+------+",
+    "explanation": "DML manages rows inside tables. Always use a WHERE clause with UPDATE and DELETE to prevent accidental table-wide modifications.",
+    "keywords": [
+      "DML",
+      "INSERT",
+      "UPDATE",
+      "DELETE",
+      "WHERE",
+      "SELECT"
+    ]
+  },
+  {
+    "id": "dbms-003",
+    "subjectId": "database-management",
+    "number": 3,
+    "title": "SELECT Queries and Filtering",
+    "objective": "Write SELECT queries with WHERE, ORDER BY, LIMIT, and aggregate functions.",
+    "language": "sql",
+    "code": "-- Practical 3: Filtering and Aggregations\nSELECT\n    first_name,\n    last_name,\n    gpa\nFROM Students\nWHERE gpa >= 8.0\nORDER BY gpa DESC\nLIMIT 5;\n\n-- Aggregate statistics\nSELECT\n    COUNT(*)      AS total_students,\n    AVG(gpa)      AS average_gpa,\n    MAX(gpa)      AS highest_gpa,\n    MIN(gpa)      AS lowest_gpa\nFROM Students;",
+    "expectedOutput": "+------------+-----------+------+\n| first_name | last_name | gpa  |\n+------------+-----------+------+\n| Carol      | White     | 9.20 |\n| Alice      | Johnson   | 9.10 |\n+------------+-----------+------+\n\n+----------------+-------------+-------------+------------+\n| total_students | average_gpa | highest_gpa | lowest_gpa |\n+----------------+-------------+-------------+------------+\n|              2 |    9.150000 |        9.20 |       9.10 |\n+----------------+-------------+-------------+------------+",
+    "explanation": "SELECT statements retrieve specific columns. Aggregate functions (COUNT, AVG, MIN, MAX) compute summary metrics across matching rows.",
+    "keywords": [
+      "SELECT",
+      "WHERE",
+      "ORDER BY",
+      "LIMIT",
+      "COUNT",
+      "AVG",
+      "aggregates"
+    ]
+  },
+  {
+    "id": "dbms-004",
+    "subjectId": "database-management",
+    "number": 4,
+    "title": "JOINs: INNER, LEFT, RIGHT",
+    "objective": "Combine data from multiple tables using INNER and LEFT JOINs.",
+    "language": "sql",
+    "code": "-- Practical 4: SQL JOINs\nSELECT\n    s.student_id,\n    CONCAT(s.first_name, ' ', s.last_name) AS student_name,\n    c.course_name,\n    e.grade\nFROM Students s\nINNER JOIN Enrollments e ON s.student_id = e.student_id\nINNER JOIN Courses c     ON e.course_id = c.course_id\nORDER BY s.student_id;",
+    "expectedOutput": "+------------+---------------+----------------------+-------+\n| student_id | student_name  | course_name          | grade |\n+------------+---------------+----------------------+-------+\n|          1 | Alice Johnson | Python Programming   | A     |\n|          1 | Alice Johnson | Database Management  | A+    |\n|          3 | Carol White   | Data Structures      | A     |\n+------------+---------------+----------------------+-------+",
+    "explanation": "INNER JOIN selects records that have matching values in both tables. Multi-table joins connect relationships via primary and foreign key constraints.",
+    "keywords": [
+      "JOIN",
+      "INNER JOIN",
+      "foreign key",
+      "relational",
+      "multi-table"
+    ]
+  },
+  {
+    "id": "dbms-005",
+    "subjectId": "database-management",
+    "number": 5,
+    "title": "Subqueries and Nested SELECT",
+    "objective": "Use subqueries in WHERE and SELECT clauses.",
+    "language": "sql",
+    "code": "-- Practical 5: Subqueries\n-- Find students with GPA higher than the average\nSELECT\n    first_name,\n    last_name,\n    gpa\nFROM Students\nWHERE gpa > (\n    SELECT AVG(gpa) FROM Students\n);",
+    "expectedOutput": "+------------+-----------+------+\n| first_name | last_name | gpa  |\n+------------+-----------+------+\n| Carol      | White     | 9.20 |\n+------------+-----------+------+",
+    "explanation": "A subquery is a query nested inside another statement. Scalar subqueries return a single value used for dynamic comparison filtering.",
+    "keywords": [
+      "subquery",
+      "nested query",
+      "WHERE",
+      "scalar subquery",
+      "AVG"
+    ]
+  },
+  {
+    "id": "dbms-006",
+    "subjectId": "database-management",
+    "number": 6,
+    "title": "Stored Procedures and Functions",
+    "objective": "Create and invoke stored procedures in SQL.",
+    "language": "sql",
+    "code": "-- Practical 6: Stored Procedure\nDELIMITER //\nCREATE PROCEDURE GetTopStudents(IN min_gpa DECIMAL(3, 2))\nBEGIN\n    SELECT student_id, first_name, last_name, gpa\n    FROM Students\n    WHERE gpa >= min_gpa\n    ORDER BY gpa DESC;\nEND //\nDELIMITER ;\n\n-- Call procedure\nCALL GetTopStudents(9.00);",
+    "expectedOutput": "+------------+------------+-----------+------+\n| student_id | first_name | last_name | gpa  |\n+------------+------------+-----------+------+\n|          3 | Carol      | White     | 9.20 |\n|          1 | Alice      | Johnson   | 9.10 |\n+------------+------------+-----------+------+",
+    "explanation": "Stored procedures encapsulate reusable database logic, reducing network round-trips and enforcing consistent query execution.",
+    "keywords": [
+      "stored procedure",
+      "DELIMITER",
+      "CALL",
+      "procedure",
+      "parameter"
+    ]
+  },
+  {
+    "id": "dbms-007",
+    "subjectId": "database-management",
+    "number": 7,
+    "title": "Transactions: COMMIT and ROLLBACK",
+    "objective": "Demonstrate ACID transactions with BEGIN, COMMIT, and ROLLBACK.",
+    "language": "sql",
+    "code": "-- Practical 7: Transactions\nSTART TRANSACTION;\n\nUPDATE Accounts SET balance = balance - 500 WHERE id = 1;\nUPDATE Accounts SET balance = balance + 500 WHERE id = 2;\n\n-- If checks pass, commit:\nCOMMIT;\n\n-- In case of failure:\n-- ROLLBACK;",
+    "expectedOutput": "Query OK, 0 rows affected\nQuery OK, 1 row affected\nQuery OK, 1 row affected\nQuery OK, 0 rows affected (committed)",
+    "explanation": "Transactions enforce Atomicity, Consistency, Isolation, and Durability (ACID). Either all modifications succeed (COMMIT) or all are reverted (ROLLBACK).",
+    "keywords": [
+      "transaction",
+      "ACID",
+      "COMMIT",
+      "ROLLBACK",
+      "atomicity"
+    ]
+  },
+  {
+    "id": "dbms-008",
+    "subjectId": "database-management",
+    "number": 8,
+    "title": "Indexes and Query Optimization",
+    "objective": "Create indexes and analyze execution plans using EXPLAIN.",
+    "language": "sql",
+    "code": "-- Practical 8: Indexes\nCREATE INDEX idx_student_email ON Students(email);\n\n-- Query plan analysis\nEXPLAIN SELECT * FROM Students WHERE email = 'alice@uni.edu';",
+    "expectedOutput": "+----+-------------+----------+------------+-------+-------------------+\n| id | select_type | table    | type       | key   | idx_student_email |\n+----+-------------+----------+------------+-------+-------------------+\n|  1 | SIMPLE      | Students | const/ref  | key   | idx_student_email |\n+----+-------------+----------+------------+-------+-------------------+",
+    "explanation": "B-Tree indexes speed up row lookup from O(n) table scans to O(log n) index searches. EXPLAIN reveals whether an index is effectively utilized.",
+    "keywords": [
+      "index",
+      "EXPLAIN",
+      "query optimization",
+      "performance",
+      "B-tree"
+    ]
+  },
+  {
+    "id": "dbms-009",
+    "subjectId": "database-management",
+    "number": 9,
+    "title": "Triggers",
+    "objective": "Create an audit logging trigger that executes on table updates.",
+    "language": "sql",
+    "code": "-- Practical 9: Triggers\nCREATE TABLE StudentAudit (\n    audit_id   INT PRIMARY KEY AUTO_INCREMENT,\n    student_id INT,\n    old_gpa    DECIMAL(3, 2),\n    new_gpa    DECIMAL(3, 2),\n    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nDELIMITER //\nCREATE TRIGGER trg_after_gpa_update\nAFTER UPDATE ON Students\nFOR EACH ROW\nBEGIN\n    IF OLD.gpa != NEW.gpa THEN\n        INSERT INTO StudentAudit (student_id, old_gpa, new_gpa)\n        VALUES (OLD.student_id, OLD.gpa, NEW.gpa);\n    END IF;\nEND //\nDELIMITER ;",
+    "expectedOutput": "Query OK, 0 rows affected\nQuery OK, 0 rows affected (trigger created)",
+    "explanation": "Triggers execute automatically in response to DML events (INSERT, UPDATE, DELETE). They maintain audit trails and enforce integrity constraints.",
+    "keywords": [
+      "trigger",
+      "audit",
+      "AFTER UPDATE",
+      "OLD",
+      "NEW",
+      "automation"
+    ]
+  },
+  {
+    "id": "dbms-010",
+    "subjectId": "database-management",
+    "number": 10,
+    "title": "Normalization: 1NF, 2NF, 3NF",
+    "objective": "Apply relational normalization to eliminate redundancy.",
+    "language": "sql",
+    "code": "-- Practical 10: Normalization to 3NF\n-- 1NF: Atomic values\n-- 2NF: No partial dependency on composite key\n-- 3NF: No transitive dependencies\n\nCREATE TABLE Departments (\n    dept_id   INT PRIMARY KEY,\n    dept_name VARCHAR(50) NOT NULL\n);\n\nCREATE TABLE Professors (\n    prof_id INT PRIMARY KEY,\n    name    VARCHAR(100) NOT NULL,\n    dept_id INT,\n    FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)\n);",
+    "expectedOutput": "Query OK, 0 rows affected\nQuery OK, 0 rows affected (3NF compliant structure)",
+    "explanation": "Normalization removes anomalies and duplicate data. 1NF ensures atomicity, 2NF removes partial key dependencies, and 3NF removes transitive dependencies.",
+    "keywords": [
+      "normalization",
+      "1NF",
+      "2NF",
+      "3NF",
+      "foreign key",
+      "schema design"
+    ]
+  },
+  {
+    "id": "web-001",
+    "subjectId": "web-development",
+    "number": 1,
+    "title": "HTML5 Page Structure",
+    "objective": "Create a modern, accessible HTML5 document with semantic elements.",
+    "language": "html",
+    "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Semantic HTML5 Layout</title>\n</head>\n<body>\n    <header>\n        <h1>PracVault</h1>\n        <p>Your Practicals. One Vault. Zero Hassle.</p>\n    </header>\n    <nav aria-label=\"Main Navigation\">\n        <ul>\n            <li><a href=\"#subjects\">Subjects</a></li>\n            <li><a href=\"#bookmarks\">Bookmarks</a></li>\n        </ul>\n    </nav>\n    <main>\n        <section id=\"subjects\">\n            <h2>Available Subjects</h2>\n            <article>\n                <h3>Python Fundamentals</h3>\n                <p>Learn core Python syntax and idioms.</p>\n            </article>\n        </section>\n    </main>\n    <footer>\n        <p>&copy; 2026 PracVault</p>\n    </footer>\n</body>\n</html>",
+    "expectedOutput": "Renders a clean semantic HTML5 layout with proper accessible headers, navigation, main article section, and footer.",
+    "explanation": "Semantic elements (<header>, <nav>, <main>, <article>, <footer>) improve accessibility for assistive technologies and enhance SEO indexing.",
+    "keywords": [
+      "HTML5",
+      "semantic",
+      "accessibility",
+      "header",
+      "nav",
+      "main",
+      "footer"
+    ]
+  },
+  {
+    "id": "web-002",
+    "subjectId": "web-development",
+    "number": 2,
+    "title": "CSS Flexbox and Grid Layouts",
+    "objective": "Build responsive UI components using CSS Flexbox and CSS Grid.",
+    "language": "css",
+    "code": "/* Responsive Grid & Flexbox Utilities */\n.app-container {\n    display: grid;\n    grid-template-columns: 260px 1fr;\n    min-height: 100vh;\n}\n\n.card-grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n    gap: 1.5rem;\n    padding: 1.5rem;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    background: #ffffff;\n    border: 1px solid #e5e7eb;\n    border-radius: 12px;\n    padding: 1.25rem;\n    transition: transform 0.2s ease, box-shadow 0.2s ease;\n}\n\n.card:hover {\n    transform: translateY(-4px);\n    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);\n}",
+    "expectedOutput": "Generates a responsive two-column layout with an auto-filling grid of interactive hoverable cards.",
+    "explanation": "CSS Grid is ideal for two-dimensional structure (columns and rows), while Flexbox handles one-dimensional alignment within components.",
+    "keywords": [
+      "css",
+      "grid",
+      "flexbox",
+      "responsive",
+      "auto-fill",
+      "hover"
+    ]
+  },
+  {
+    "id": "web-003",
+    "subjectId": "web-development",
+    "number": 3,
+    "title": "JavaScript DOM Manipulation",
+    "objective": "Dynamically render and manipulate elements using vanilla JavaScript.",
+    "language": "javascript",
+    "code": "// Practical 3: DOM Element Creation\nfunction renderBadge(label, color = \"#4263EB\") {\n    const badge = document.createElement(\"span\");\n    badge.className = \"badge\";\n    badge.textContent = label;\n    badge.style.backgroundColor = `${color}1A`;\n    badge.style.color = color;\n    badge.style.padding = \"4px 8px\";\n    badge.style.borderRadius = \"6px\";\n    badge.style.fontSize = \"12px\";\n    badge.style.fontWeight = \"600\";\n    return badge;\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n    const container = document.getElementById(\"badge-container\");\n    if (container) {\n        container.appendChild(renderBadge(\"Active\"));\n    }\n});",
+    "expectedOutput": "Appends a stylized DOM badge span element dynamically into #badge-container upon page load.",
+    "explanation": "document.createElement() and appendChild() manipulate the DOM tree safely. Using textContent prevents XSS vulnerabilities compared to innerHTML.",
+    "keywords": [
+      "DOM",
+      "javascript",
+      "createElement",
+      "appendChild",
+      "security",
+      "XSS"
+    ]
+  },
+  {
+    "id": "web-004",
+    "subjectId": "web-development",
+    "number": 4,
+    "title": "Fetch API and Async/Await",
+    "objective": "Consume REST APIs with error handling and async/await.",
+    "language": "javascript",
+    "code": "// Practical 4: Fetch with async/await\nasync function loadPracticals(subjectId) {\n    try {\n        const response = await fetch(`/api/subjects/${subjectId}/practicals`);\n        if (!response.ok) {\n            throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        const data = await response.json();\n        console.log(`Loaded ${data.length} practicals`);\n        return data;\n    } catch (err) {\n        console.error(\"Failed to fetch practicals:\", err);\n        return [];\n    }\n}",
+    "expectedOutput": "Asynchronously fetches JSON practical data with safe HTTP status validation and error logging.",
+    "explanation": "async/await simplifies asynchronous Promise flows. Always verify response.ok before parsing JSON to catch non-2xx HTTP error codes.",
+    "keywords": [
+      "fetch",
+      "async",
+      "await",
+      "Promise",
+      "HTTP",
+      "REST",
+      "JSON"
+    ]
+  },
+  {
+    "id": "web-005",
+    "subjectId": "web-development",
+    "number": 5,
+    "title": "HTML Forms and Validation",
+    "objective": "Implement accessible form controls with client-side validation.",
+    "language": "html",
+    "code": "<!-- Practical 5: Form Validation -->\n<form id=\"feedback-form\" novalidate>\n    <div class=\"form-group\">\n        <label for=\"name\">Full Name</label>\n        <input type=\"text\" id=\"name\" required minlength=\"2\" placeholder=\"Jane Doe\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Student Email</label>\n        <input type=\"email\" id=\"email\" required placeholder=\"jane@uni.edu\">\n    </div>\n    <button type=\"submit\">Submit Feedback</button>\n</form>\n\n<script>\ndocument.getElementById('feedback-form').addEventListener('submit', (e) => {\n    e.preventDefault();\n    if (e.target.checkValidity()) {\n        alert('Form submitted successfully!');\n    } else {\n        alert('Please complete all required fields.');\n    }\n});\n</script>",
+    "expectedOutput": "Displays a validated input form checking minimum length, email syntax, and preventing submission on errors.",
+    "explanation": "HTML5 validation attributes (required, minlength, type='email') coupled with JavaScript checkValidity() provide robust user feedback.",
+    "keywords": [
+      "form",
+      "validation",
+      "HTML5",
+      "checkValidity",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "web-006",
+    "subjectId": "web-development",
+    "number": 6,
+    "title": "LocalStorage and SessionStorage",
+    "objective": "Persist preferences and bookmark states using Web Storage APIs.",
+    "language": "javascript",
+    "code": "// Practical 6: LocalStorage Helper\nconst Storage = {\n    get(key, defaultValue = null) {\n        try {\n            const item = localStorage.getItem(key);\n            return item ? JSON.parse(item) : defaultValue;\n        } catch {\n            return defaultValue;\n        }\n    },\n    set(key, value) {\n        try {\n            localStorage.setItem(key, JSON.stringify(value));\n            return true;\n        } catch {\n            return false;\n        }\n    }\n};\n\n// Example usage: Bookmark management\nconst bookmarks = Storage.get(\"pracvault_bookmarks\", []);\nbookmarks.push(\"py-001\");\nStorage.set(\"pracvault_bookmarks\", bookmarks);\nconsole.log(\"Bookmarks:\", Storage.get(\"pracvault_bookmarks\"));",
+    "expectedOutput": "Bookmarks: [\"py-001\"] (persisted across page reloads)",
+    "explanation": "localStorage persists key-value strings across browser restarts. Wrapping calls in JSON.parse/stringify enables structured object caching.",
+    "keywords": [
+      "localStorage",
+      "web storage",
+      "persistence",
+      "JSON",
+      "bookmarks"
+    ]
+  },
+  {
+    "id": "web-007",
+    "subjectId": "web-development",
+    "number": 7,
+    "title": "Node.js HTTP Server",
+    "objective": "Create a lightweight HTTP server serving JSON endpoints.",
+    "language": "javascript",
+    "code": "// Practical 7: Node.js HTTP Server\nimport http from 'http';\n\nconst server = http.createServer((req, res) => {\n    res.setHeader('Content-Type', 'application/json');\n    if (req.url === '/health' && req.method === 'GET') {\n        res.writeHead(200);\n        res.end(JSON.stringify({ status: 'ok', uptime: process.uptime() }));\n    } else {\n        res.writeHead(404);\n        res.end(JSON.stringify({ error: 'Route not found' }));\n    }\n});\n\nconst PORT = 3000;\nserver.listen(PORT, () => {\n    console.log(`Server running at http://localhost:${PORT}/`);\n});",
+    "expectedOutput": "Server running at http://localhost:3000/\nGET /health returns HTTP 200 {\"status\":\"ok\",\"uptime\":...}",
+    "explanation": "Node.js http.createServer() handles client requests and constructs streaming responses without external framework dependencies.",
+    "keywords": [
+      "node",
+      "http",
+      "server",
+      "REST",
+      "JSON",
+      "backend"
+    ]
+  },
+  {
+    "id": "web-008",
+    "subjectId": "web-development",
+    "number": 8,
+    "title": "CSS Animations and Transitions",
+    "objective": "Implement keyframe animations and respect prefers-reduced-motion.",
+    "language": "css",
+    "code": "/* Practical 8: Micro-interactions */\n@keyframes fadeInSlideUp {\n    from {\n        opacity: 0;\n        transform: translateY(12px);\n    }\n    to {\n        opacity: 1;\n        transform: translateY(0);\n    }\n}\n\n.practical-card {\n    animation: fadeInSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;\n}\n\n/* Accessibility: honor prefers-reduced-motion */\n@media (prefers-reduced-motion: reduce) {\n    .practical-card {\n        animation: none;\n        transition: none;\n    }\n}",
+    "expectedOutput": "Smooth entrance slide-up animation that gracefully turns off for users requesting reduced motion.",
+    "explanation": "CSS keyframes provide smooth 60fps animations. Supporting prefers-reduced-motion ensures accessibility for vestibular motion sensitivity.",
+    "keywords": [
+      "css",
+      "animation",
+      "keyframes",
+      "reduced-motion",
+      "accessibility",
+      "transition"
+    ]
+  },
+  {
+    "id": "web-009",
+    "subjectId": "web-development",
+    "number": 9,
+    "title": "JavaScript ES6+ Features",
+    "objective": "Use destructuring, spread syntax, optional chaining, and nullish coalescing.",
+    "language": "javascript",
+    "code": "// Practical 9: Modern ES6+ Idioms\nconst practical = {\n    id: \"py-001\",\n    title: \"Hello World\",\n    author: { name: \"Antigravity\" }\n};\n\n// Destructuring & default values\nconst { id, title, language = \"python\" } = practical;\n\n// Optional chaining (?.) and nullish coalescing (??)\nconst reviewer = practical.review?.assignedTo ?? \"Unassigned\";\n\n// Spread operator\nconst updatedPractical = { ...practical, bookmarked: true, reviewed: false };\n\nconsole.log({ id, title, language, reviewer, updatedPractical });",
+    "expectedOutput": "{\n  id: 'py-001',\n  title: 'Hello World',\n  language: 'python',\n  reviewer: 'Unassigned',\n  updatedPractical: { id: 'py-001', title: 'Hello World', author: { name: 'Antigravity' }, bookmarked: true, reviewed: false }\n}",
+    "explanation": "Modern JavaScript features improve safety and conciseness: ?. prevents null pointer errors, ?? provides defaults only on null/undefined, and ... merges objects.",
+    "keywords": [
+      "ES6",
+      "destructuring",
+      "spread",
+      "optional chaining",
+      "nullish coalescing"
+    ]
+  },
+  {
+    "id": "web-010",
+    "subjectId": "web-development",
+    "number": 10,
+    "title": "Express.js REST API",
+    "objective": "Build a REST API router with express middleware.",
+    "language": "javascript",
+    "code": "// Practical 10: Express.js API\nimport express from 'express';\n\nconst app = express();\napp.use(express.json());\n\nconst practicals = [\n    { id: 1, title: \"Array Operations\", subject: \"Data Structures\" }\n];\n\napp.get('/api/practicals', (req, res) => {\n    res.json(practicals);\n});\n\napp.post('/api/practicals', (req, res) => {\n    const newPrac = { id: practicals.length + 1, ...req.body };\n    practicals.push(newPrac);\n    res.status(201).json(newPrac);\n});\n\napp.listen(3000, () => console.log(\"API on port 3000\"));",
+    "expectedOutput": "API on port 3000\nGET /api/practicals returns practicals list.\nPOST /api/practicals appends new item with HTTP 201.",
+    "explanation": "Express provides an intuitive middleware pipeline, JSON body parsing, and routing primitives for standard REST architectures.",
+    "keywords": [
+      "express",
+      "REST API",
+      "middleware",
+      "json",
+      "routing",
+      "HTTP"
+    ]
+  }
+]

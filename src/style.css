@@ -1,0 +1,3 @@
+/* PracVault — this file intentionally left minimal.
+   All real global styles are in src/styles/global.css (imported via main.js).
+   This file is kept to avoid any legacy import errors. */

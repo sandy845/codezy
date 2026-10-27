@@ -1,0 +1,104 @@
+/* ==========================================================================
+   PracVault Purposeful Animations & Motion
+   Restrained micro-animations, transitions, and reduced motion compliance
+   ========================================================================== */
+
+/* Fade entrance */
+@keyframes pvFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide up entrance */
+@keyframes pvSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle pulse for feedback */
+@keyframes pvSuccessPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Utility animation classes */
+.pv-animate-fade {
+  animation: pvFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pv-animate-slide-up {
+  animation: pvSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pv-success-pop {
+  animation: pvSuccessPulse 0.3s ease-in-out;
+}
+
+/* Card hover transitions */
+.pv-card-interactive {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.pv-card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pv-shadow-card-hover);
+  border-color: var(--pv-border-hover);
+}
+
+.pv-card-interactive:active {
+  transform: translateY(-1px);
+}
+
+/* Button micro-interaction */
+.pv-btn-interactive {
+  transition: background-color 0.15s ease,
+              border-color 0.15s ease,
+              transform 0.1s ease,
+              box-shadow 0.15s ease;
+}
+
+.pv-btn-interactive:active {
+  transform: scale(0.98);
+}
+
+/* Stagger entrance for lists */
+.pv-stagger-item:nth-child(1) { animation-delay: 20ms; }
+.pv-stagger-item:nth-child(2) { animation-delay: 40ms; }
+.pv-stagger-item:nth-child(3) { animation-delay: 60ms; }
+.pv-stagger-item:nth-child(4) { animation-delay: 80ms; }
+.pv-stagger-item:nth-child(5) { animation-delay: 100ms; }
+.pv-stagger-item:nth-child(6) { animation-delay: 120ms; }
+.pv-stagger-item:nth-child(7) { animation-delay: 140ms; }
+.pv-stagger-item:nth-child(8) { animation-delay: 160ms; }
+.pv-stagger-item:nth-child(9) { animation-delay: 180ms; }
+.pv-stagger-item:nth-child(10) { animation-delay: 200ms; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
